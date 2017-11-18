@@ -270,7 +270,7 @@ public class RelatedBuzzwordsIdentifier {
 
         List<String> wordsFromHeadlineToAnalyse = new ArrayList<>();
         wordsFromHeadlineToAnalyse.addAll(Arrays.asList(headlineToAnalyseCorrectFormat.split(" ")));
-        wordsFromHeadlineToAnalyse = DataForAllBuzzWordsProvider.removeBlackListWords(wordsFromHeadlineToAnalyse);
+        wordsFromHeadlineToAnalyse = removeBlackListWords(wordsFromHeadlineToAnalyse);
         Set<String> wordsFromHeadlineToAnalyseAsSet = new HashSet<>();
         wordsFromHeadlineToAnalyseAsSet.addAll(wordsFromHeadlineToAnalyse);
 
@@ -280,7 +280,7 @@ public class RelatedBuzzwordsIdentifier {
 
             List<String> wordsFromHeadline = new ArrayList<>();
             wordsFromHeadline.addAll(Arrays.asList(headlineCorrectFormat.split(" ")));
-            wordsFromHeadline = DataForAllBuzzWordsProvider.removeBlackListWords(wordsFromHeadline);
+            wordsFromHeadline = removeBlackListWords(wordsFromHeadline);
             Set<String> wordsFromHeadlineAsSet = new HashSet<>();
             wordsFromHeadlineAsSet.addAll(wordsFromHeadline);
 
@@ -383,6 +383,67 @@ public class RelatedBuzzwordsIdentifier {
         return highestGroupNumber;
     }
 
+    private List<String> removeBlackListWords(List<String> allWords) {
+        List<String> blackListWords = new ArrayList<>();
+
+        blackListWords.add("the");
+        blackListWords.add("to");
+        blackListWords.add("in");
+        blackListWords.add("of");
+        blackListWords.add("a");
+        blackListWords.add("and");
+        blackListWords.add("for");
+        blackListWords.add("on");
+        blackListWords.add("is");
+        blackListWords.add("2017");
+        blackListWords.add("by");
+        blackListWords.add("at");
+        blackListWords.add("us");
+        blackListWords.add("as");
+        blackListWords.add("from");
+        blackListWords.add("after");
+        blackListWords.add("are");
+        blackListWords.add("it");
+        blackListWords.add("that");
+        blackListWords.add("this");
+        blackListWords.add("be");
+        blackListWords.add("you");
+        blackListWords.add("an");
+        blackListWords.add("his");
+        blackListWords.add("will");
+        blackListWords.add("has");
+        blackListWords.add("was");
+        blackListWords.add("have");
+        blackListWords.add("your");
+        blackListWords.add("how");
+        blackListWords.add("who");
+        blackListWords.add("not");
+        blackListWords.add("but");
+        blackListWords.add("its");
+        blackListWords.add("what");
+        blackListWords.add("he");
+        blackListWords.add("their");
+        blackListWords.add("man");
+        blackListWords.add("her");
+        blackListWords.add("get");
+        blackListWords.add("no");
+        blackListWords.add("our");
+        blackListWords.add("new");
+        blackListWords.add("more");
+        blackListWords.add("with");
+        blackListWords.add("news");
+        blackListWords.add("ago");
+        blackListWords.add("about");
+        blackListWords.add("over");
+        blackListWords.add("up");
+        blackListWords.add("out");
+        blackListWords.add("all");
+        blackListWords.add("or");
+
+        allWords.removeAll(blackListWords);
+
+        return allWords;
+    }
 
     private void doDatabaseUpdate(String database, Map<String, Integer> buzzwordGroups) throws Exception {
         initializeDbConnection();
@@ -430,7 +491,7 @@ public class RelatedBuzzwordsIdentifier {
 
     private void initializeDbConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/words", "root", "Vuurwerk00");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/words?&serverTimezone=UTC", "root", "");
     }
 
     private void closeDbConnection() throws SQLException {
