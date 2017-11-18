@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>BigDbStorer</title>
+        <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="js/backend-db-controller.js"></script>
+    </head>
+
+    <body>
+        <div ng-app = "mainApp" ng-controller = "backendDbController">
+            <div>
+                <button ng-click="updateBigDb()">Update big db</button>
+            </div>
+            <div>
+                <button ng-click="updateBuzzDb()">Update buzz db</button>
+            </div>
+            <div>
+                <button ng-click="updateFinanceBigDb()">Update finance big db</button>
+            </div>
+            <div>
+                <button ng-click="updateFinanceBuzzDb()">Update finance buzz db</button>
+            </div>
+            <div>
+                <button ng-click="updateSportBigDb()">Update sport big db</button>
+            </div>
+            <div>
+                <button ng-click="updateSportBuzzDb()">Update sport buzz db</button>
+            </div>
+            <div>
+                <button ng-click="updateEntertainmentBigDb()">Update entertainment big db</button>
+            </div>
+            <div>
+                <button ng-click="updateEntertainmentBuzzDb()">Update entertainment buzz db</button>
+            </div>
+            <div>
+                <button ng-click="updateCryptoBigDb()">Update crypto big db</button>
+            </div>
+            <div>
+                <button ng-click="updateCryptoBuzzDb()">Update crypto buzz db</button>
+            </div>
+            <div>
+                <button ng-click="postTweets()">Post Topic tweets</button>
+            </div>
+            <div>
+                <button ng-click="postCryptoTweets()">Post crypto tweets</button>
+            </div>
+        </div>
+    </body>
+</html>
